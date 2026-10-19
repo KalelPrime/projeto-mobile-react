@@ -10,7 +10,10 @@
     "react": "19.2.3",
     "react-native": "0.86.3",
     "react-native-gifted-charts": "^1.4.81",
-    "react-native-svg": "^15.15.4"
+    "react-native-svg": "^15.15.4",
+    "react-dom": "19.2.3",
+"react-native-web": "~0.21.2"
+    
   },
   "scripts": {
     "start": "expo start",
