@@ -6,7 +6,9 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    experiments: { baseUrl: '/baseurl' },
+    "experiments": {
+      "baseUrl": "/projeto-mobile-react"
+    },
     "ios": {
       "supportsTablet": true
     },
