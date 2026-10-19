@@ -2,8 +2,8 @@ name: Deploy Expo Web on GitHub Pages
 
 on:
   push:
-    branches: [ main, master ] # Dispara automaticamente ao enviar código
-  workflow_dispatch: # Permite rodar a Action manualmente no site do GitHub
+    branches: [ main, master ]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -29,17 +29,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-          cache-dependency-path: 'MeuDinheiro/package-lock.json' # Ajuste o caminho se seu package.json estiver na raiz
 
-      - name: Instalar dependências
+      - name: Instalar dependências e Gerar Build
         run: |
           cd MeuDinheiro
-          npm ci
-
-      - name: Gerar build da versão Web
-        run: |
-          cd MeuDinheiro
+          npm install
           npx expo export -p web
 
       - name: Configurar artefato das Pages
@@ -48,8 +42,9 @@ jobs:
       - name: Enviar artefato do build
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'MeuDinheiro/dist' # Pasta onde o Expo gera os arquivos da web
+          path: 'MeuDinheiro/dist'
 
       - name: Fazer deploy no GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        
